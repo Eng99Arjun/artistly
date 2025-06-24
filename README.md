@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Artistly
+
+Artistly is a modern web platform for discovering, booking, and managing performing artists for events. Whether you're an event planner or an artist, Artistly streamlines the process of connecting talent with opportunities.
+
+## Features
+
+- **Browse Artists:** Search and filter a diverse catalog of performers by category, location, and price range.
+- **Artist Onboarding:** Artists can create profiles, showcase their talents, and set their availability and rates.
+- **Booking Requests:** Event planners can send booking inquiries directly to artists or their managers.
+- **Responsive Design:** Fully responsive UI built with React, Next.js, and Tailwind CSS.
+- **Testimonials & Categories:** Highlighted client testimonials and popular artist categories.
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) (App Router)
+- [React](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Hook Form](https://react-hook-form.com/) & [Zod](https://zod.dev/) (for form validation)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js (v18 or higher recommended)
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/artistly.git
+   cd artistly
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. **Open [http://localhost:3000](http://localhost:3000) in your browser.**
+
+### Project Structure
+
+```
+src/
+  app/                # Next.js app directory (pages, layouts)
+  components/         # Reusable UI components
+  data/               # Static JSON data (artists, etc.)
+  styles/             # Global styles (Tailwind)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Customization
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Add Artists:** Update `src/data/artists.json` to add or modify artist profiles.
+- **Categories:** Edit the categories array in `src/app/page.jsx` to change available categories.
+- **Styling:** Modify Tailwind classes or add custom styles in `src/styles/globals.css`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Contributing
 
-## Learn More
+Contributions are welcome! Please open issues or submit pull requests for improvements and bug fixes.
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+[MIT](LICENSE)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Artistly** – Book top performing artists for your next event!
