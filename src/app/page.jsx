@@ -39,7 +39,7 @@ export default function Home() {
             <Button asChild variant="secondary" size="lg">
               <Link href="/artists">Browse Artists</Link>
             </Button>
-            <Button asChild variant="outline" size="lg">
+            <Button asChild variant="secondary" size="lg">
               <Link href="/onboard">List Your Talent</Link>
             </Button>
           </div>
