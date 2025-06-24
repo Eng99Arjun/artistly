@@ -141,7 +141,7 @@ export default function Home() {
             Join thousands of event planners booking talent through Artistly
           </p>
           <Button asChild variant="secondary" size="lg">
-            <Link href="/signup">Get Started Free</Link>
+            <Link href="/onboard">Sign up for Free</Link>
           </Button>
         </div>
       </section>
