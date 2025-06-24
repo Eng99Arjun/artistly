@@ -23,7 +23,6 @@ export default function ArtistListing() {
     const fetchArtists = async () => {
       try {
         setLoading(true);
-        // Use absolute path to JSON file in public directory
         const response = await fetch('/data/artists.json');
         
         if (!response.ok) {
@@ -76,16 +75,13 @@ export default function ArtistListing() {
       );
     }
     
-    // Apply price filters
-    if (filters.minPrice) {
+    // Apply price filters - fixed logic
+    if (filters.minPrice || filters.maxPrice) {
+      const minPrice = filters.minPrice ? parseInt(filters.minPrice) : 0;
+      const maxPrice = filters.maxPrice ? parseInt(filters.maxPrice) : Number.MAX_SAFE_INTEGER;
+      
       result = result.filter(artist => 
-        artist.minPrice >= parseInt(filters.minPrice)
-      );
-    }
-    
-    if (filters.maxPrice) {
-      result = result.filter(artist => 
-        artist.maxPrice <= parseInt(filters.maxPrice)
+        artist.minPrice <= maxPrice && artist.maxPrice >= minPrice
       );
     }
     
@@ -118,19 +114,19 @@ export default function ArtistListing() {
   const handlePriceRangeChange = (value) => {
     if (value === '') {
       setFilters(prev => ({ ...prev, minPrice: '', maxPrice: '' }));
+    } else if (value === '5000') {
+      setFilters(prev => ({ ...prev, minPrice: '5000', maxPrice: '' }));
     } else {
       const [min, max] = value.split('-');
-      setFilters(prev => ({ 
-        ...prev, 
-        minPrice: min || '0', 
-        maxPrice: max || '10000' 
-      }));
+      setFilters(prev => ({ ...prev, minPrice: min, maxPrice: max }));
     }
   };
 
   const currentPriceRange = filters.minPrice && filters.maxPrice 
     ? `${filters.minPrice}-${filters.maxPrice}`
-    : '';
+    : filters.minPrice && !filters.maxPrice
+      ? '5000'
+      : '';
 
   return (
     <div className="container mx-auto py-8 px-4">
