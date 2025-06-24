@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "category": "Singer",
+    "location": "New York, NY",
+    "minPrice": 500,
+    "maxPrice": 1000,
+    "bio": "Professional vocalist with 10+ years of experience performing at weddings, corporate events, and private parties."
+  },
+  {
+    "id": 2,
+    "name": "Dance Fusion",
+    "category": "Dancers",
+    "location": "Los Angeles, CA",
+    "minPrice": 800,
+    "maxPrice": 2500,
+    "bio": "Award-winning dance troupe specializing in contemporary and hip-hop performances for events of all sizes."
+  },
+  {
+    "id": 3,
+    "name": "Tech Talkers",
+    "category": "Speakers",
+    "location": "San Francisco, CA",
+    "minPrice": 2000,
+    "maxPrice": 5000,
+    "bio": "Industry-leading tech experts providing keynote speeches and panel discussions at conferences worldwide."
+  },
+  {
+    "id": 4,
+    "name": "DJ SpinMaster",
+    "category": "DJ",
+    "location": "Miami, FL",
+    "minPrice": 1000,
+    "maxPrice": 3000,
+    "bio": "International DJ with residencies in top clubs across Europe and the US. Specializes in EDM and house music."
+  },
+  {
+    "id": 5,
+    "name": "Melody Makers",
+    "category": "Band",
+    "location": "Chicago, IL",
+    "minPrice": 1500,
+    "maxPrice": 5000,
+    "bio": "Versatile 5-piece band covering hits from the 70s to today. Perfect for weddings and corporate events."
+  },
+  {
+    "id": 6,
+    "name": "Sarah Johnson",
+    "category": "Violinist",
+    "location": "Boston, MA",
+    "minPrice": 300,
+    "maxPrice": 800,
+    "bio": "Classically trained violinist available for ceremonies, receptions, and special events."
+  },
+  {
+    "id": 7,
+    "name": "Magic Mike",
+    "category": "Magician",
+    "location": "Las Vegas, NV",
+    "minPrice": 500,
+    "maxPrice": 1500,
+    "bio": "Close-up magician and stage performer with 15 years experience entertaining corporate and private audiences."
+  },
+  {
+    "id": 8,
+    "name": "Comedy Club",
+    "category": "Comedian",
+    "location": "Austin, TX",
+    "minPrice": 800,
+    "maxPrice": 2000,
+    "bio": "Stand-up comedians providing clean, corporate-friendly humor for events and conferences."
+  }
+]
