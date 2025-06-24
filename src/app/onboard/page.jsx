@@ -3,13 +3,14 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useState } from 'react';
-import  Button  from '@/components/ui/Button';
-import  Input  from '@/components/ui/Input';
-import  Select  from '@/components/ui/Select';
-import  Checkbox  from '@/components/ui/Checkbox';
-import  Textarea  from '@/components/ui/Textarea';
+import Button from '@/components/ui/Button';
+import Input from '@/components/ui/Input';
+import Select from '@/components/ui/Select';
+import Checkbox from '@/components/ui/Checkbox';
+import Textarea from '@/components/ui/Textarea';
 import Link from 'next/link';
 
+// Zod schema for validation
 const formSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   bio: z.string().min(20, 'Bio must be at least 20 characters'),
@@ -25,7 +26,7 @@ const formSchema = z.object({
 export default function OnboardingForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [previewImage, setPreviewImage] = useState(null);
-  
+
   const { 
     register, 
     handleSubmit, 
@@ -52,19 +53,13 @@ export default function OnboardingForm() {
     { value: '10000+', label: '$10,000+' },
   ];
 
+  // Form submission handler
   const onSubmit = async (data) => {
     setIsSubmitting(true);
-    
     try {
       // Simulate API submission
       await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // In real app: 
-      // const response = await fetch('/api/artists', {
-      //   method: 'POST',
-      //   body: JSON.stringify(data)
-      // });
-      
+      // In real app: send data to API
       console.log('Form submitted:', data);
       alert('Artist profile submitted successfully!');
       reset();
@@ -77,15 +72,16 @@ export default function OnboardingForm() {
     }
   };
 
+  // Handle category checkbox changes
   const handleCategoryChange = (category) => {
     const currentCategories = watch('categories');
     const newCategories = currentCategories.includes(category)
       ? currentCategories.filter(c => c !== category)
       : [...currentCategories, category];
-    
     setValue('categories', newCategories);
   };
 
+  // Handle image file input
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -106,12 +102,10 @@ export default function OnboardingForm() {
           Create a profile to showcase your talent to event planners worldwide
         </p>
       </div>
-      
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
         {/* Profile Section */}
         <section className="bg-white rounded-lg shadow p-6">
           <h2 className="text-xl font-semibold mb-6 pb-2 border-b">Profile Information</h2>
-          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="md:col-span-1">
               <div className="mb-4">
@@ -133,6 +127,7 @@ export default function OnboardingForm() {
                       htmlFor="profileImage" 
                       className="absolute bottom-0 right-0 bg-white rounded-full p-2 shadow cursor-pointer"
                     >
+                      {/* Camera Icon */}
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
                       </svg>
@@ -151,7 +146,6 @@ export default function OnboardingForm() {
                 </div>
               </div>
             </div>
-            
             <div className="md:col-span-2">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Input
@@ -161,7 +155,6 @@ export default function OnboardingForm() {
                   {...register('name')}
                   placeholder="Enter artist or band name"
                 />
-                
                 <Input
                   label="Location (City, Country)"
                   id="location"
@@ -169,7 +162,6 @@ export default function OnboardingForm() {
                   {...register('location')}
                   placeholder="e.g., New York, USA"
                 />
-                
                 <div className="md:col-span-2">
                   <Textarea
                     label="Artist Bio"
@@ -184,11 +176,9 @@ export default function OnboardingForm() {
             </div>
           </div>
         </section>
-        
         {/* Performance Details */}
         <section className="bg-white rounded-lg shadow p-6">
           <h2 className="text-xl font-semibold mb-6 pb-2 border-b">Performance Details</h2>
-          
           <div className="mb-6">
             <label className="block text-sm font-medium mb-2">
               Performance Categories
@@ -207,7 +197,6 @@ export default function OnboardingForm() {
               <p className="text-red-500 text-sm mt-1">{errors.categories.message}</p>
             )}
           </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium mb-2">
@@ -226,7 +215,6 @@ export default function OnboardingForm() {
                 <p className="text-red-500 text-sm mt-1">{errors.languages.message}</p>
               )}
             </div>
-            
             <div>
               <Select
                 label="Fee Range"
@@ -236,7 +224,6 @@ export default function OnboardingForm() {
                 {...register('feeRange')}
                 placeholder="Select a fee range"
               />
-              
               <div className="mt-6">
                 <Input
                   label="Website (optional)"
@@ -249,11 +236,9 @@ export default function OnboardingForm() {
             </div>
           </div>
         </section>
-        
         {/* Social Media */}
         <section className="bg-white rounded-lg shadow p-6">
           <h2 className="text-xl font-semibold mb-6 pb-2 border-b">Social Media & Links</h2>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Input
               label="YouTube Channel (optional)"
@@ -266,7 +251,6 @@ export default function OnboardingForm() {
                 </svg>
               }
             />
-            
             <Input
               label="Instagram (optional)"
               id="instagram"
@@ -280,7 +264,6 @@ export default function OnboardingForm() {
             />
           </div>
         </section>
-        
         <div className="flex justify-between">
           <Button 
             type="button" 

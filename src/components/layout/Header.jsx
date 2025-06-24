@@ -26,10 +26,10 @@ export default function Header() {
         
         <div className="mt-4 md:mt-0 flex gap-3">
           <Button asChild variant="outline">
-            <Link href="/login">Log In</Link>
+            <Link href="/">Log In</Link>
           </Button>
           <Button asChild variant="primary">
-            <Link href="/signup">Sign Up</Link>
+            <Link href="/">Sign Up</Link>
           </Button>
         </div>
       </div>

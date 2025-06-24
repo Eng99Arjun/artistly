@@ -1,29 +1,30 @@
 import Link from 'next/link';
-import  Button  from '@/components/ui/Button';
+import Button from '@/components/ui/Button';
+
+// Static data outside component for performance
+const categories = [
+  { id: 1, name: 'Singers', icon: '🎤', count: 120 },
+  { id: 2, name: 'Dancers', icon: '💃', count: 85 },
+  { id: 3, name: 'Speakers', icon: '🎙️', count: 65 },
+  { id: 4, name: 'DJs', icon: '🎧', count: 95 },
+];
+
+const testimonials = [
+  {
+    id: 1,
+    name: 'Sarah Johnson',
+    role: 'Event Planner, TechCon',
+    text: 'Found the perfect keynote speaker for our conference in just 2 days!',
+  },
+  {
+    id: 2,
+    name: 'Michael Rodriguez',
+    role: 'Wedding Planner',
+    text: 'The live band made our wedding unforgettable. Easy booking process!',
+  },
+];
 
 export default function Home() {
-  const categories = [
-    { id: 1, name: 'Singers', icon: '🎤', count: 120 },
-    { id: 2, name: 'Dancers', icon: '💃', count: 85 },
-    { id: 3, name: 'Speakers', icon: '🎙️', count: 65 },
-    { id: 4, name: 'DJs', icon: '🎧', count: 95 },
-  ];
-
-  const testimonials = [
-    {
-      id: 1,
-      name: 'Sarah Johnson',
-      role: 'Event Planner, TechCon',
-      text: 'Found the perfect keynote speaker for our conference in just 2 days!',
-    },
-    {
-      id: 2,
-      name: 'Michael Rodriguez',
-      role: 'Wedding Planner',
-      text: 'The live band made our wedding unforgettable. Easy booking process!',
-    },
-  ];
-
   return (
     <div>
       {/* Hero Section */}
@@ -53,8 +54,8 @@ export default function Home() {
           <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
             Simple steps to find and book the perfect performers for your event
           </p>
-          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Step 1 */}
             <div className="text-center p-6 bg-gray-50 rounded-xl">
               <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl">1</span>
@@ -64,7 +65,7 @@ export default function Home() {
                 Search our diverse catalog of performers by category, location, and price range.
               </p>
             </div>
-            
+            {/* Step 2 */}
             <div className="text-center p-6 bg-gray-50 rounded-xl">
               <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl">2</span>
@@ -74,7 +75,7 @@ export default function Home() {
                 Send inquiries directly to artists or their managers with your event details.
               </p>
             </div>
-            
+            {/* Step 3 */}
             <div className="text-center p-6 bg-gray-50 rounded-xl">
               <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl">3</span>
@@ -95,7 +96,6 @@ export default function Home() {
           <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
             Find the perfect performer for your event type
           </p>
-          
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {categories.map((category) => (
               <Link 
@@ -116,7 +116,6 @@ export default function Home() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">What Our Clients Say</h2>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {testimonials.map((testimonial) => (
               <div key={testimonial.id} className="bg-gray-50 p-6 rounded-xl">

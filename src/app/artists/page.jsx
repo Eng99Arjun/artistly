@@ -18,17 +18,13 @@ export default function ArtistListing() {
     search: '',
   });
 
-  // Fetch artists data
+  // Fetch artists data from local JSON
   useEffect(() => {
     const fetchArtists = async () => {
       try {
         setLoading(true);
         const response = await fetch('/data/artists.json');
-        
-        if (!response.ok) {
-          throw new Error('Failed to fetch artists data');
-        }
-        
+        if (!response.ok) throw new Error('Failed to fetch artists data');
         const data = await response.json();
         setArtists(data);
         setFilteredArtists(data);
@@ -38,7 +34,6 @@ export default function ArtistListing() {
         setLoading(false);
       }
     };
-    
     fetchArtists();
   }, []);
 
@@ -47,10 +42,9 @@ export default function ArtistListing() {
     applyFilters();
   }, [filters, artists]);
 
+  // Filtering logic
   const applyFilters = () => {
     let result = [...artists];
-    
-    // Apply search filter
     if (filters.search) {
       const searchTerm = filters.search.toLowerCase();
       result = result.filter(artist => 
@@ -60,34 +54,27 @@ export default function ArtistListing() {
         (artist.bio && artist.bio.toLowerCase().includes(searchTerm))
       );
     }
-    
-    // Apply category filter
     if (filters.category) {
       result = result.filter(artist => 
         artist.category.toLowerCase() === filters.category.toLowerCase()
       );
     }
-    
-    // Apply location filter
     if (filters.location) {
       result = result.filter(artist => 
         artist.location.toLowerCase().includes(filters.location.toLowerCase())
       );
     }
-    
-    // Apply price filters - fixed logic
     if (filters.minPrice || filters.maxPrice) {
       const minPrice = filters.minPrice ? parseInt(filters.minPrice) : 0;
       const maxPrice = filters.maxPrice ? parseInt(filters.maxPrice) : Number.MAX_SAFE_INTEGER;
-      
       result = result.filter(artist => 
         artist.minPrice <= maxPrice && artist.maxPrice >= minPrice
       );
     }
-    
     setFilteredArtists(result);
   };
 
+  // Handlers
   const handleFilterChange = (name, value) => {
     setFilters(prev => ({ ...prev, [name]: value }));
   };
@@ -149,7 +136,6 @@ export default function ArtistListing() {
               onChange={(e) => handleFilterChange('search', e.target.value)}
             />
           </div>
-          
           <div>
             <Select
               label="Category"
@@ -167,7 +153,6 @@ export default function ArtistListing() {
               ]}
             />
           </div>
-          
           <div>
             <Select
               label="Price Range"
@@ -177,7 +162,6 @@ export default function ArtistListing() {
               options={priceRanges}
             />
           </div>
-          
           <div>
             <Button 
               variant="outline" 
@@ -195,7 +179,6 @@ export default function ArtistListing() {
         <div className="lg:col-span-1">
           <FilterBlock filters={filters} onFilterChange={handleFilterChange} />
         </div>
-        
         {/* Artist Results */}
         <div className="lg:col-span-3">
           {loading ? (
@@ -214,7 +197,6 @@ export default function ArtistListing() {
                   </Button>
                 </div>
               </div>
-              
               {filteredArtists.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {filteredArtists.map(artist => (
